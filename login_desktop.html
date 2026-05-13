@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BancoDev - Acesso e Cadastro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS: ESTILIZAÇÃO PARA DESKTOP
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #d83d20; /* Fundo Vermelho BancoDev */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Caixa de vidro (Glassmorphism) */
+        .caixa-acesso {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .caixa-acesso h1 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        /* Estilo dos campos de entrada */
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 45px 15px 20px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: white;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .input-group .icone {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Links e Checkbox */
+        .opcoes-extras {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .lembrar-senha {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botão Branco */
+        .btn-principal {
+            width: 100%;
+            padding: 15px;
+            background-color: white;
+            color: #d83d20;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .btn-principal:hover {
+            background-color: #f0f0f0;
+        }
+
+        .link-rodape {
+            font-size: 14px;
+        }
+
+        /* Classe para esconder as telas */
+        .escondido {
+            display: none !important;
+        }
+
+        /* Estilo da tela de sucesso */
+        .icone-sucesso {
+            font-size: 70px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .texto-sucesso {
+            font-size: 15px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="tela-login" class="caixa-acesso">
+        <h1>Login BancoDev</h1>
+
+        <div class="input-group">
+            <input type="text" placeholder="Usuário">
+            <i class="fa-solid fa-user icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Senha">
+            <i class="fa-solid fa-lock icone"></i>
+        </div>
+
+        <div class="opcoes-extras">
+            <label class="lembrar-senha">
+                <input type="checkbox"> Lembrar senha
+            </label>
+            <a href="#">Esqueci senha</a>
+        </div>
+
+        <button type="button" class="btn-principal" onclick="alert('Login em desenvolvimento!')">Login</button>
+
+        <div class="link-rodape">
+            Não tem uma conta? <a href="javascript:void(0)" onclick="trocarTela('tela-cadastro')">Cadastre-se</a>
+        </div>
+    </div>
+
+    <div id="tela-cadastro" class="caixa-acesso escondido">
+        <h1>Criar uma conta</h1>
+
+        <div class="input-group">
+            <input type="text" placeholder="Nome Completo">
+            <i class="fa-solid fa-id-badge icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="text" placeholder="CPF">
+            <i class="fa-solid fa-address-card icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="email" placeholder="E-mail">
+            <i class="fa-solid fa-envelope icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Senha">
+            <i class="fa-solid fa-lock icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Confirmar senha">
+            <i class="fa-solid fa-check-circle icone"></i>
+        </div>
+
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-sucesso')">Criar conta</button>
+
+        <div class="link-rodape">
+            Já tenho conta. <a href="javascript:void(0)" onclick="trocarTela('tela-login')">Fazer Login</a>
+        </div>
+    </div>
+
+    <div id="tela-sucesso" class="caixa-acesso escondido">
+        <i class="fa-solid fa-circle-check icone-sucesso"></i>
+        
+        <h1>Conta criada!</h1>
+        <p class="texto-sucesso">Sua conta foi criada com sucesso. Seja bem-vindo(a) ao BancoDev!</p>
+        
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-login')">Ir para o Login</button>
+    </div>
+
+    <script>
+        function trocarTela(idTelaQueQueroMostrar) {
+            // Esconde todas as caixas de acesso
+            const todasAsTelas = document.querySelectorAll('.caixa-acesso');
+            todasAsTelas.forEach(function(tela) {
+                tela.classList.add('escondido');
+            });
+
+            // Mostra apenas a tela solicitada
+            const telaDestino = document.getElementById(idTelaQueQueroMostrar);
+            if (telaDestino) {
+                telaDestino.classList.remove('escondido');
+            }
+        }
+    </script>
+
+</body>
+</html>
